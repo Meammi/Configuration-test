@@ -1,27 +1,17 @@
 from label_studio_sdk import LabelStudio
 from dotenv import dotenv_values
-import requests
 
-key = dotenv_values(".env")
+def update_label_config(project_id: str, LABEL_STUDIO_URL: str , config_path: str):
+  key = dotenv_values(".env")
+  api_key = key["API_KEY"]
 
-LABEL_STUDIO_URL = 'http://localhost:8080'
-API_KEY = key["API_KEY"]
-project_id = '14'
-ls = LabelStudio(base_url=LABEL_STUDIO_URL, api_key=API_KEY)
-
-with open("config.xml") as f:
+  ls = LabelStudio(base_url=LABEL_STUDIO_URL, api_key=api_key)
+  with open(config_path) as f:
     label_config_patch = f.read()
+    
+  project = ls.projects.update(
+    id=project_id,
+    label_config=label_config_patch,
+  )
+  return project
 
-
-
-# Patch Config
-project = ls.projects.update(
-    title='Dental test',
-    id = project_id,
-    label_config= label_config_patch,
-)
-
-
-# print(project.title)
-# print(project.description)
-# print(project.label_config)
