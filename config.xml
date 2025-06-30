@@ -1,0 +1,16 @@
+<View>
+  <Header value="Select label and click the image to start"/>
+  <Image name="image" value="$image" zoom="true"/>
+
+  <PolygonLabels name="label" toName="image" strokeWidth="3" pointSize="small" opacity="0.9">
+    <Label value="Normal" background="#FFA39E"/>
+    <Label value="Caries" background="#D4380D"/>
+    <Label value="Impaction" background="#FFC069"/>
+    <Label value="Pulpitis" background="#AD8B00"/>
+    <Label value="Filling" background="#D3F261"/>
+    <Label value="RCT" background="#389E0D"/>
+    <Label value="Crown" background="#5CDBD3"/>
+    <Label value="Implant" background="#FFA39E"/>
+    <Label value="Bridge" background="#D4380D"/>
+  </PolygonLabels>
+</View>
