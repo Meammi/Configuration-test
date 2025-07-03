@@ -63,8 +63,10 @@ def update_config(project_ids):
 
         for project_id in project_ids:
             try:
-                project = ls.projects.get(project_id)
-                project.update(label_config=label_global_config)
+                ls.projects.update(
+                    id=project_id,
+                    label_config=label_global_config
+                )
                 print(f"Updated config for project ID {project_id}")
             except Exception as e:
                 print(f"Failed to update project {project_id}: {e}")
@@ -73,6 +75,7 @@ def update_config(project_ids):
         print("config.xml not found.")
     except Exception as e:
         print(f"Error reading config: {e}")
+
 
 
 if __name__ == "__main__":
