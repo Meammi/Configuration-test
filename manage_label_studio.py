@@ -1,5 +1,4 @@
 import argparse
-import os
 from label_studio_sdk import LabelStudio
 from dotenv import dotenv_values
 
@@ -33,20 +32,10 @@ def show_info(project_id):
         print(f"Description: {project.description}")
         print(f"Created By: {project.created_by}")
         print(f"Created At: {project.created_at}")
+        print(f"Image amount: {project.queue_total}")
     except Exception as e:
         print(f"Error: {e}")
-
-def show_info(project_id):
-    try:
-        project = ls.projects.get(project_id)
-        print(f"Project ID: {project.id}")
-        print(f"Title: {project.title}")
-        print(f"Description: {project.description}")
-        print(f"Created By: {project.created_by}")
-        print(f"Created At: {project.created_at}")
-    except Exception as e:
-        print(f"Error: {e}")
-
+        
 def show_global_config():
     try:
         with open("config.xml") as f:
